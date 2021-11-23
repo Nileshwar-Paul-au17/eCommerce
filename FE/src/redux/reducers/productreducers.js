@@ -1,6 +1,6 @@
 import * as actionType from '../../constants/productconstant';
 
-export const getProductsReducer = (state={products:[]} ,action) => {
+export const getProductsReducer = (state= {products:[]} ,action) => {
     switch(actionType){
         case actionType.GET_PRODUCTS_SUCCESS:
             return ({product :action.payload})
@@ -8,7 +8,5 @@ export const getProductsReducer = (state={products:[]} ,action) => {
             return ({product :action.payload})
         default:
             return state
-        
-
     }
 };
