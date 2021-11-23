@@ -110,7 +110,7 @@ const LoginDialog = ({ open, setOpen ,setAccount}) => {
     }
 
     const onInputChange = (e) => {
-        //console.log(signup); 
+        console.log(signup); 
         setSignup({ ...signup, [e.target.name]: e.target.value });
     }
 
@@ -129,10 +129,10 @@ const LoginDialog = ({ open, setOpen ,setAccount}) => {
         let response = await authenticateSignup(signup);
         if(!response) return;
         handleClose();
-        //setAccount(signup.username);
+        setAccount(signup.username);
     }
     
-    const toggleSignup = () => {
+    const toggleUserAccount = () => {
         toggleAccount(accountInitialValues.signup);
     }
 
@@ -152,14 +152,14 @@ const LoginDialog = ({ open, setOpen ,setAccount}) => {
                     {
                         account.view === 'login' ? 
                         <Box className={classes.login}>
-                            <TextField onChange={(e) => onValueChange(e)} name='username' label='Enter Email/Mobile number' />
-                            { error && <Typography className={classes.error}>Please enter valid Email ID/Mobile number</Typography> }
+                            <TextField onChange={(e) => onValueChange(e)} name='username' label='Enter User Name' />
+                            { error && <Typography className={classes.error}>Please enter valid User Name & Password</Typography> }
                             <TextField onChange={(e) => onValueChange(e)} name='password' label='Enter Password' />
                             <Typography className={classes.text}>By continuing, you agree to eCommerce's Terms of Use and Privacy Policy.</Typography>
                             <Button className={classes.loginbtn} onClick={() => loginUser()} >Login</Button>
                             <Typography className={classes.text} style={{textAlign:'center'}}>OR</Typography>
                             <Button className={classes.requestbtn}>Request OTP</Button>
-                            <Typography className={classes.createText} onClick={() => toggleSignup()}>New to eCommerce? Create an account</Typography>
+                            <Typography className={classes.createText} onClick={() => toggleUserAccount()}>New to eCommerce? Create an account</Typography>
                         </Box> : 
                         <Box className={classes.login}>
                             <TextField onChange={(e) => onInputChange(e)} name='firstname' label='Enter Firstname' />
