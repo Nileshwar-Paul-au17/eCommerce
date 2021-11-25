@@ -11,13 +11,29 @@ export const userLogIn = async (request,response) => {
             request.session.loggedIn = true
             console.log(request.session)
             console.log(request.body)
+<<<<<<< HEAD
             return response.status(200).json({message: `${request.body.username} logged successfull`});
+=======
+            return response.status(200).json({message: `${request.body.username} loged successfull`});
+>>>>>>> 197d568b0737c4b2478db4fc46373df3a974dc0e
         } else {
             return response.status(401).json({message: 'Invalid Login'});
                
         }
     } catch (error) {
         response.send({error: error.message});
+<<<<<<< HEAD
+=======
+    }
+}
+function checkLoggedIn(request, response,next){
+    console.log('checkloggedin function')
+    
+    if(request.query.username){
+        next()
+    }else{
+        router.post('/login', userLogIn);
+>>>>>>> 197d568b0737c4b2478db4fc46373df3a974dc0e
     }
 }
 
