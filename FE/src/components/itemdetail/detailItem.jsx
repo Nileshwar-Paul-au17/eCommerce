@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-<<<<<<< HEAD
 import { useDispatch, useSelector } from 'react-redux';
 import { getProductDetails } from '../../redux/action/productAction';
 import { useParams } from 'react-router-dom'
@@ -61,31 +60,3 @@ export const DetailView = () => {
 
 }
 
-=======
-import { getProductById } from '../../service/api';
-import { useDispatch, useSelector } from 'react-redux';
-import { getProductDetails } from '../../redux/action/productAction';
-export const DetailView = () =>{
-
-    const product = useSelector(state => state.getProductDetails);
-    const dispatch = useDispatch()
-    useEffect(() =>{
-        dispatch(getProductDetails());
-    },[dispatch]);
-    return(
-        <div>
-            <h1>Hi</h1>
-            <h1>Hi</h1>
-            <h1>Hi</h1>
-            <h1>Hi</h1>
-            <h1>Hi</h1>
-            <h1>Hi</h1>
-            <h1>Hi</h1>
-            <h1>Hi</h1>
-            <h1>Hi</h1>
-         </div>
-    )
-       
-        
-}
->>>>>>> 197d568b0737c4b2478db4fc46373df3a974dc0e

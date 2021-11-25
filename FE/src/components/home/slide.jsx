@@ -1,31 +1,19 @@
 
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
-<<<<<<< HEAD
 import { makeStyles, Typography, Box } from '@material-ui/core'
 import { Link } from 'react-router-dom'
-=======
-import { makeStyles, Typography, Box, Link } from '@material-ui/core'
->>>>>>> 197d568b0737c4b2478db4fc46373df3a974dc0e
 
 
 const responsive = {
   superLargeDesktop: {
 
     breakpoint: { max: 4000, min: 3000 },
-<<<<<<< HEAD
     items: 5
   },
   desktop: {
     breakpoint: { max: 3000, min: 1024 },
     items: 5
-=======
-    items: 4
-  },
-  desktop: {
-    breakpoint: { max: 3000, min: 1024 },
-    items: 3
->>>>>>> 197d568b0737c4b2478db4fc46373df3a974dc0e
   },
   tablet: {
     breakpoint: { max: 1024, min: 464 },
@@ -54,10 +42,7 @@ const Slide = ({ products }) => {
   const classes = useStyle()
   return (
     <Carousel responsive={responsive} >
-<<<<<<< HEAD
   
-=======
->>>>>>> 197d568b0737c4b2478db4fc46373df3a974dc0e
      {
       products.map(product => (
         <Link  key = {product.id} to={`/product/${product.id}`}>
@@ -66,16 +51,11 @@ const Slide = ({ products }) => {
             <Typography className={classes.text} >{product.title.shortTitle}</Typography>
             <Typography className={classes.text} style={{ color: "green" }}>{product.discount}</Typography>
             <Typography className={classes.text}>{product.tagline}</Typography>
-<<<<<<< HEAD
 
           </Box>
 
         </Link>
 
-=======
-          </Box>
-        </Link>
->>>>>>> 197d568b0737c4b2478db4fc46373df3a974dc0e
       ))
     }
     </Carousel>
