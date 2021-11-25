@@ -1,18 +1,26 @@
 
-
 import User from '../model/userSchema.js';
-export const userLogIn = async (request, response) => {
+import router from '../routes/routes.js'
+
+export const userLogIn = async (request,response) => {
     try {
         let user = await User.findOne({ username: request.body.username, password: request.body.password });
-        if (user) {
-            return response.status(200).json({message: `${request.body.username} loged successfull`});
+        if (user != null ) {
+            request.session.username = user.username
+            request.session.email = user.email
+            request.session.loggedIn = true
+            console.log(request.session)
+            console.log(request.body)
+            return response.status(200).json({message: `${request.body.username} logged successfull`});
         } else {
-            return response.status(401).json(message, 'Invalid Login');
+            return response.status(401).json({message: 'Invalid Login'});
+               
         }
     } catch (error) {
-        response.json({Error: error.message});
+        response.send({error: error.message});
     }
 }
+
 export const userSignUp = async (request, response) => {
     try {
         console.log(request.body)
@@ -25,7 +33,7 @@ export const userSignUp = async (request, response) => {
         await newUser.save();
         response.status(200).json({message: 'user has been successfully registered'});
     } catch (error) {
-        response.json({Error:error.message});
+        response.json({skdvcodsc});
     }
 }
 
