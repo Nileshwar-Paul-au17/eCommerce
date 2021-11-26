@@ -8,6 +8,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "heroku-prebuild": "cd FE && npm install && npm run build && cd .. && cd BE && npm install",
     "start": "cd BE &&npm install && npm start"
   },
   "repository": {
