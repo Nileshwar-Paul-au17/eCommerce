@@ -5,11 +5,11 @@ export const cartReducer = (state = { cartItems: []}, action) => {
     switch(action.type) {
         case actionTypes.ADD_TO_CART:
             const item = action.payload;
-            console.log("item.id",item.id)
+            //console.log("item.id",item.id)
             const existItem = state.cartItems.find(product => product.id === item.product.id);
-            console.log(existItem)
-            console.log(item);
-            console.log(state.cartItems)
+            // console.log(existItem)
+            // console.log(item);
+            // console.log(state.cartItems)
 
             if(existItem){
                 return {
@@ -17,7 +17,7 @@ export const cartReducer = (state = { cartItems: []}, action) => {
                 }
             } else {
                 let a =  { ...state, cartItems: [...state.cartItems, item]}
-                console.log(a)
+                //console.log(a)
                 return a;
             }
         case actionTypes.REMOVE_FROM_CART:
@@ -33,3 +33,4 @@ export const cartReducer = (state = { cartItems: []}, action) => {
             return state;
     }
 }
+ 

@@ -3,6 +3,7 @@ import { ShoppingCart as Cart, FlashOn as Flash } from '@material-ui/icons';
 import clsx from 'clsx';
 import {useDispatch} from 'react-redux';
 import {addToCart} from '../../redux/action/cartActions';
+import { useNavigate } from "react-router-dom";
 const useStyle =makeStyles({
     button:{
         height:50,
@@ -21,10 +22,11 @@ const useStyle =makeStyles({
 const ActionItems = ({product}) => {
         const classes = useStyle() 
         const  dispatch = useDispatch();
-        
+        const history = useNavigate();
         const additemsToCart = () =>{
             dispatch(addToCart(product.id));
             // console.log(product.id)
+            history('/cart')
         }
     return(
         <>  
