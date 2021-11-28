@@ -24,7 +24,7 @@ const ActionItems = ({product}) => {
         
         const additemsToCart = () =>{
             dispatch(addToCart(product.id));
-            console.log(product.id)
+            // console.log(product.id)
         }
     return(
         <>  

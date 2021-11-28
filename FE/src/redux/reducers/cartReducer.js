@@ -1,23 +1,35 @@
-
-
 import * as actionTypes from '../constants/cartConstants';
 
-export const cartReducer = (state={cartItems:[]},action ) => {
-
-    switch(action.type){
+export const cartReducer = (state = { cartItems: []}, action) => {
+    
+    switch(action.type) {
         case actionTypes.ADD_TO_CART:
             const item = action.payload;
 
-            const exist = state.cartItems.find(product => product.id === item.id) //checking that particular items is already present in cart or not
+            const existItem = state.cartItems.find(product => product.id === item.id);
+            console.log(existItem)
+            console.log(item);
+            console.log(state.cartItems)
 
-            if(exist){
-                return
+            if(existItem){
+                return {
+                    ...state, cartItems: state.cartItems.map(x => x.product === existItem.product ? item : x)
+                }
+            } else {
+                let a =  { ...state, cartItems: [...state.cartItems, item]}
+                console.log(a)
+                return a;
             }
-            return {...state , cartItems:[...state.cartItems,item]};
+        case actionTypes.REMOVE_FROM_CART:
+            console.log(state.cartItems)
+            console.log(action.payload);
+            let s =  {
+                ...state, cartItems: state.cartItems.filter(product => product.id !== action.payload)
+            }
+            console.log(s);
+            return s;
+
         default:
             return state;
-
-            
-
     }
 }
