@@ -24,7 +24,7 @@ export const cartReducer = (state = { cartItems: []}, action) => {
             console.log(state.cartItems)
             console.log(action.payload);
             let s =  {
-                ...state, cartItems: state.cartItems.filter(product => product.id !== item.product)
+                ...state, cartItems: state.cartItems.filter(product => product.product.id !== action.payload)
             }
             console.log(s);
             return s;
