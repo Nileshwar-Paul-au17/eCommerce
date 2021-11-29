@@ -54,6 +54,7 @@ const CartItems = ({ items,removeItemFromCart }) => {
                     <span className={classes.greyText}> <strike>₹{items && items.product.price?.mrp}</strike></span> &nbsp;&nbsp;&nbsp;
                     <span>₹{items && items.product.price?.cost}</span>&nbsp;&nbsp;&nbsp;
                     <span style={{color:'green'}}>{items && items.product.price?.discount} Off</span>
+                  
                     <Button className={classes.btn} onClick={() => removeItemFromCart(items.product.id)}>Remove</Button>
                 </Typography> 
                 

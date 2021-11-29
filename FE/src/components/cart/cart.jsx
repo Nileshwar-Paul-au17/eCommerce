@@ -1,7 +1,7 @@
 
 import {useEffect} from 'react';
 import {makeStyles,Box,Typography} from '@material-ui/core';
-import {removeItemFromCart} from '../../redux/action/cartActions';
+import {removeFromCart} from '../../redux/action/cartActions';
 import {useDispatch, useSelector} from 'react-redux';
 
 import CartItems from './cartitems';
@@ -34,7 +34,7 @@ const Cart = () =>{
     })
     const dispatch =useDispatch()
     const removeItemFromCart =(id)=>{
-        dispatch(removeItemFromCart(id))
+        dispatch(removeFromCart(id))
 
     };
     return(
@@ -57,9 +57,7 @@ const Cart = () =>{
                     }
                 </Box>
                 <Box className={classes.rightComponent}>
-                
                 </Box>
-
            </Box>
            :
            <p>Empty Cart</p>
