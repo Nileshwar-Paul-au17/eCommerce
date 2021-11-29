@@ -1,11 +1,9 @@
-
 import {useEffect} from 'react';
 import {makeStyles,Box,Typography} from '@material-ui/core';
 import {removeFromCart} from '../../redux/action/cartActions';
 import {useDispatch, useSelector} from 'react-redux';
-
 import CartItems from './cartitems';
-
+import EmptyCart  from './emptyCart';
 const useStyle = makeStyles({
     component:{
         marginTop:60,
@@ -21,34 +19,27 @@ const useStyle = makeStyles({
         padding:'15px ,24px',
         background:'#fff'
     }
-
 })
 const Cart = () =>{
     const classes = useStyle()
-    
-  
     const {cartItems,} = useSelector(state => state.cart)
-
     useEffect(() => {
         console.log(cartItems)
     })
     const dispatch =useDispatch()
     const removeItemFromCart =(id)=>{
         dispatch(removeFromCart(id))
-
     };
     return(
         <>
            {   
            cartItems.length?
            <Box className={classes.component}>
-             
                 <Box className={classes.leftComponent}>
                     <Box className={classes.header}>
                         <Typography style={{fontWeight:600,fontSize:18}}>
                             My cart ({cartItems.length})
                         </Typography>
-                      
                     </Box>
                     {
                         cartItems.map(items => (
@@ -60,7 +51,10 @@ const Cart = () =>{
                 </Box>
            </Box>
            :
-           <p>Empty Cart</p>
+           <>
+           <EmptyCart/>
+          
+           </>
            }
         </>
     )
