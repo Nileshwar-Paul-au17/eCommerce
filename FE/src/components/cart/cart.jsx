@@ -7,20 +7,21 @@ import CartItems from './cartitems';
 import EmptyCart  from './emptyCart';
 import TotalView from './totalView';
 
-import React, { useContext } from 'react';
-import {ContextProvider} from '../../context/contextProvider';
+import  { useContext } from 'react';
+import {LoginContext} from '../../context/contextProvider';
+import {removefromcart} from '../../redux/action/cartActions'
 
 const Cart = () =>{
     const path = useNavigate()
-    const user = useContext(ContextProvider);
+    const user = useContext(LoginContext);
+    console.log(user.account)
     const orderplaced = () =>{
-           if(user.account !== ''){
-            alert("Your Order Placed")
-           
-            path('/')
+           if(user.account === ''){
+            alert("login plz")
            }
            else{
-               alert('login plz')
+            dispatch(removefromcart(cartItems))
+              path('/')
            }
     }
     const classes = useStyle()
