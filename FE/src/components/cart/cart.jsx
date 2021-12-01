@@ -7,42 +7,24 @@ import CartItems from './cartitems';
 import EmptyCart  from './emptyCart';
 import TotalView from './totalView';
 
-const useStyle = makeStyles({
-    component:{
-        marginTop:60,
-        padding:'30px 135px',
-        display:'flex'
-        
-        
-    },
-    leftComponent:{
-       width:'70%'
-    },
-    rightComponent:{
-       
-    },
-    header:{
-        padding:'15px ,24px',
-        background:'#fff'
-    },
-    placeorder:{
-        background:'#fb641b',
-        borderRadius:'2px',
-        width:'250px',
-        height:'50px',
-        display:'flex',
-        marginLeft:'auto'
-    },
-    bottom:{
-            background:'#fff',
-            borderTop:'1px soid black',
-            boxShadow:'0 2px 10px rgb(0 0 0 /10%)',
-            marginTop:'5px'
-    }
-})
+import React, { useContext } from 'react';
+import {ContextProvider} from '../../context/contextProvider';
+
 const Cart = () =>{
+    const path = useNavigate()
+    const user = useContext(ContextProvider);
+    const orderplaced = () =>{
+           if(user.account !== ''){
+            alert("Your Order Placed")
+           
+            path('/')
+           }
+           else{
+               alert('login plz')
+           }
+    }
     const classes = useStyle()
-    const {cartItems,} = useSelector(state => state.cart)
+    let {cartItems,} = useSelector(state => state.cart)
     useEffect(() => {
         //console.log(cartItems)
     })
@@ -50,11 +32,7 @@ const Cart = () =>{
     const removeItemFromCart =(id)=>{
         dispatch(removeFromCart(id))
     };
-    const path = useNavigate()
-    const orderplaced = () =>{
-            alert("Your Order Placed")
-            path('/')
-    }
+   
     return(
         <>
            {   
@@ -88,4 +66,36 @@ const Cart = () =>{
         </>
     )
 }
+const useStyle = makeStyles({
+    component:{
+        marginTop:60,
+        padding:'30px 135px',
+        display:'flex'
+        
+    },
+    leftComponent:{
+       width:'70%'
+    },
+    rightComponent:{
+       
+    },
+    header:{
+        padding:'15px ,24px',
+        background:'#fff'
+    },
+    placeorder:{
+        background:'#fb641b',
+        borderRadius:'2px',
+        width:'250px',
+        height:'50px',
+        display:'flex',
+        marginLeft:'auto'
+    },
+    bottom:{
+            background:'#fff',
+            borderTop:'1px soid black',
+            boxShadow:'0 2px 10px rgb(0 0 0 /10%)',
+            marginTop:'5px'
+    }
+})
 export default Cart;
