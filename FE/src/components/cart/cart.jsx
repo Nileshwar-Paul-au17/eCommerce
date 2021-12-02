@@ -49,6 +49,7 @@ const Cart = () => {
             alert("login plz")
         }
         else {
+            alert("order placed")
             dispatch(removefromcart(cartItems))
             path('/')
         }
