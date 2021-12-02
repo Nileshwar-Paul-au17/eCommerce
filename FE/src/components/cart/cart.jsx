@@ -21,6 +21,7 @@ const Cart = () =>{
            }
            else{
             dispatch(removefromcart(cartItems))
+            alert("order placed")
               path('/')
            }
     }
